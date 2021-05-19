@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,
-    CardTitle} from 'reactstrap';
+import {
+    Card, CardImg, CardImgOverlay, CardText, CardBody,
+    CardTitle
+} from 'reactstrap';
 class ProgramerDetail extends Component {
     renderProgramer(prog) {
         return (
@@ -18,51 +20,23 @@ class ProgramerDetail extends Component {
                 </Card>
             </div>);
     }
-
-
-renderComment(comments) {
-    if (comments != null) {
-        const commentListItem = comments.map((comments) => {
+    render() {
+        if (this.props.prog != null) {
             return (
-                <li key={comments.id}>
-                    <p>{comments.comments}</p>
-                    <p>{comments.author},
-                 </p>
-                </li>
+                <div className="row">
+                    {this.renderProgramer(this.props.prog)}
+
+                    {this.renderComment(this.props.prog.comments)}
+                </div>
+
             );
-        });
-    
-    return (
-        <div className="col-12 col-md5 m-1">
-            <h4>comments</h4>
-            <ul className="list-unstyled">
-                {commentListItem}
-            </ul>
-        </div>
-    
-    )
+        }
+        else {
+            return (<div></div>);
+        }
     }
-else
- {
-    return (<div></div>);
-}
-};
-render()
-   { if (this.props.prog != null) {
-        return (
-            <div className="row">
-                {this.renderProgramer(this.props.prog)}
-
-                {this.renderComment(this.props.prog.comments)}
-            </div>
-
-        );
-        }  
-    else {
-        return (<div></div>);
-    }
-    }        
 }
 
 
-export default ProgramerDetail;
+
+    export default ProgramerDetail;
