@@ -3,6 +3,11 @@ import { PROGRAMERS } from '../shared/program';
 import Prog1 from './Prog1';
 import ProgramerDetail from './programerDetail';
 import {Navbar,NavbarBrand} from 'reactstrap';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
+import Home from './HomeComponent';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 
 class Main extends Component {
     constructor(props) {
@@ -18,17 +23,15 @@ class Main extends Component {
     render() {
         return(
         <div>
-            <Navbar dark color="primary">
-                <div className="container">
-                    <NavbarBrand>
-                        Hire top level programers
-                        </NavbarBrand>
-                </div>
-            </Navbar>
+            
+            <Header />
 
-            <Prog1 programers={this.state.programers}
-                onClick={(ProgId) => {this.onProgramerSelect(ProgId) }} />
+            <Prog1 programers={this.state.programers}onClick={(progId)=>this.onProgramerSelect(progId)}/>
+                
             <ProgramerDetail programer={this.state.programers.filter((prog) => prog.id === this.state.selectedProgramer)[0]} />
+        
+        
+        <Footer />
         </div>)
                        
     }
